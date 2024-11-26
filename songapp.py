@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import pickle
 import pandas as pd
+from io import BytesIO
 
 # Function to get song details from Spotify
 def get_song_details(track_id, access_token):
@@ -35,9 +36,19 @@ def recommend(song, song_list, similarity):
         recommendation.append(song_list.iloc[i[0]].track_name)
     return recommendation
 
+# Function to load similarity matrix from Google Drive
+def load_similarity_from_drive():
+    file_url = "https://drive.google.com/uc?export=download&id=1eLQ5bZYp3nduFFWZtm7s8QrCZKHvoUfN"
+    response = requests.get(file_url)
+    if response.status_code == 200:
+        similarity = pickle.load(BytesIO(response.content))
+        return similarity
+    else:
+        raise Exception(f"Error downloading similarity.pkl: {response.status_code}")
+
 # Load the song data and similarity matrix
-song_list = pickle.load(open('songs.pkl', 'rb'))
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+song_list = pickle.load(open('songs.pkl', 'rb'))  # Assuming songs.pkl is stored locally or uploaded
+similarity = load_similarity_from_drive()
 
 # Ensure the song_list is a DataFrame and contains the 'track_name' column
 if isinstance(song_list, pd.DataFrame):
@@ -52,7 +63,7 @@ st.title("Song Recommendation System")
 song = st.selectbox("Choose a song", song_names)
 
 # Spotify access token
-access_token = "BQC_wzcT6yc12dnd8PJeNFGFHyZGNVJZcmrYXMAGPzRRUSAWZKAQR-Rxv8AG4_8PAqc1BQzus4cWpLXZrNqp1uRsxPzvvPU8Ppb9set7aL86JA7a58A"
+access_token = "YOUR_SPOTIFY_ACCESS_TOKEN"
 
 if st.button('Recommend'):
     # Call the recommend function
