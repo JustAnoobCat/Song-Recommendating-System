@@ -67,7 +67,7 @@ import os
 load_dotenv()
 
 # Get the Spotify access token
-access_token = os.getenv("SPOTIFY_ACCESS_TOKEN")
+access_token = "BQDqsSXd1DCqb9-4u5VRkTe5J0abB7sQtcoMln4Mi6l1dBAzqUkSP86RL0vm_j6wYZiqXHe-U7K3uWQ8cBnbTmHrf9jWyXOjp1fBJwqCHNBJ-Yc9asU"
 
 
 
