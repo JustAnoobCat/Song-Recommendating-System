@@ -60,12 +60,6 @@ st.title("Song Recommendation System")
 st.subheader("Discover new music based on your favorite tracks!")
 selected_song = st.selectbox("Select a song to get recommendations:", song_names)
 
-from dotenv import load_dotenv
-import os
-
-# Load environment variables from .env file
-load_dotenv()
-
 # Get the Spotify access token
 access_token = "BQDqsSXd1DCqb9-4u5VRkTe5J0abB7sQtcoMln4Mi6l1dBAzqUkSP86RL0vm_j6wYZiqXHe-U7K3uWQ8cBnbTmHrf9jWyXOjp1fBJwqCHNBJ-Yc9asU"
 
