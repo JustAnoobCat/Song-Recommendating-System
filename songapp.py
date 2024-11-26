@@ -63,7 +63,7 @@ st.title("Song Recommendation System")
 song = st.selectbox("Choose a song", song_names)
 
 # Spotify access token
-access_token = "YOUR_SPOTIFY_ACCESS_TOKEN"
+access_token = "BQBX0Gy643ooRfsQ0nD6zqQEhuFJihbdgZHbJtP6Yh8KXRDFxwqIXuUVtz82TldvCQ6fiTQY_BmXWFdgz_LaUHRdvmtRRYynC3Hr2EsD586Uo78uyYc"
 
 if st.button('Recommend'):
     # Call the recommend function
